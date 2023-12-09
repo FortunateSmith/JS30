@@ -43,10 +43,16 @@
           const regex = new RegExp(this.value, 'gi');
           const cityName = place.city.replace(regex, `<span class='hl'>${this.value}</span>`);
           const stateName = place.state.replace(regex, `<span class='hl'>${this.value}</span>`);
+
+          const latitude = place.latitude.toFixed(3);
+          const longitude = place.longitude.toFixed(3);
+
           return `
           <li>
             <span class="name">${cityName}, ${stateName}</span>
-            <span class="population">${numberWithCommas(place.population)}</span>
+            <!-- <span class="population">${numberWithCommas(place.population)}</span> -->
+            <span class="population">${latitude}, ${longitude}</span>
+            
           </li>
           `
         }).join();
